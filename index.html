@@ -2239,6 +2239,7 @@
       var w=D.getElementById('rf-assistant-widget'); if(w) w.remove();
       var d=D.getElementById('rf-assistant-dropdown'); if(d) d.remove();
       var n=D.getElementById('rf-assistant-note'); if(n) n.remove();
+      var e=D.getElementById('rf-et-anim'); if(e) e.remove();
       if(W.__RF_ASSISTANT_CLEANUP__===stop) delete W.__RF_ASSISTANT_CLEANUP__;
     }
     W.__RF_ASSISTANT_CLEANUP__=stop;
@@ -2260,6 +2261,28 @@
       note.style.background=color||th.noteBg;
       note.style.color=th.noteColor;
       setTimeout(function(){ if(note) note.remove(); }, 3000);
+    }
+
+    function showEtAnim(){
+      var old=D.getElementById('rf-et-anim'); if(old) old.remove();
+      var th=T();
+      var el=D.createElement('div');
+      el.id='rf-et-anim';
+      el.textContent='👽';
+      el.setAttribute('aria-hidden','true');
+      el.style.cssText='position:fixed;left:50%;bottom:96px;z-index:2147483647;font-size:48px;line-height:1;pointer-events:none;transform:translate(-50%,0) scale(0.55);opacity:0;transition:transform 0.85s cubic-bezier(0.22,1,0.36,1),opacity 0.75s ease;filter:drop-shadow(0 0 18px '+th.accent+');';
+      D.body.appendChild(el);
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          el.style.transform='translate(-50%,-150px) scale(1.28)';
+          el.style.opacity='1';
+        });
+      });
+      setTimeout(function(){
+        el.style.opacity='0';
+        el.style.transform='translate(-50%,-210px) scale(0.95)';
+      }, 520);
+      setTimeout(function(){ if(el.parentNode) el.remove(); }, 1100);
     }
 
     function applySync(text){
@@ -2368,7 +2391,9 @@
     function uses(){ return read(UKEY,{}); }
     function useMacro(m,node,removeShortcut){
       var u=uses(); u[m.id]=(Number(u[m.id])||0)+1; write(UKEY,u);
-      insert(m.content,node,removeShortcut); widget();
+      insert(m.content,node,removeShortcut);
+      showEtAnim();
+      widget();
     }
 
     function closeDrop(){ if(drop) drop.remove(); drop=null; options=[]; choice=0; }
