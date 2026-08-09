@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-09",
+  "source": {
+    "file": "index.html",
+    "sha256": "56cfc726199964f5a830b4c5b67f979a34eb89cc47a3151605923c03e362ecd2",
+    "bytes": 200131,
+    "lines": 5436
+  },
+  "htmlIds": {
+    "count": 106,
+    "uniqueCount": 106,
+    "values": [
+      "theme-toggle-btn",
+      "theme-toggle-label",
+      "export-macros",
+      "import-macros",
+      "download-backup",
+      "import-backup",
+      "link-file",
+      "file-link-status",
+      "macro-file",
+      "bookmarklet",
+      "sync",
+      "sync-status",
+      "view-macros",
+      "macro-editor-disclosure",
+      "editor-title",
+      "editing-badge",
+      "macro-form",
+      "macro-id",
+      "shortcut",
+      "macro-content",
+      "macro-favorite",
+      "macro-cancel",
+      "macro-count",
+      "search-macro",
+      "macro-library",
+      "view-jira",
+      "view-bancos",
+      "search-banco",
+      "bancos-destaque",
+      "bancos-destaque-grid",
+      "bancos-lista",
+      "view-ocorrencias",
+      "search-ocorrencia",
+      "ocorrencias-mais-usadas-wrap",
+      "ocorrencias-mais-usadas-grid",
+      "ocorrencias-lista",
+      "view-saldo",
+      "sd-processar",
+      "sd-exportar",
+      "sd-limpar",
+      "sd-creditos",
+      "sd-detect-creditos",
+      "sd-pagamentos",
+      "sd-detect-pagamentos",
+      "sd-descontos",
+      "sd-detect-descontos",
+      "sd-search",
+      "sd-only-open",
+      "sd-kpis",
+      "sd-kpi-saldo",
+      "sd-kpi-pagar",
+      "sd-kpi-desc",
+      "sd-kpi-pago",
+      "sd-kpi-qtd",
+      "sd-alertas",
+      "sd-table-wrap",
+      "sd-tbody",
+      "sd-empty",
+      "controle-ponto",
+      "ponto-state",
+      "ponto-entry",
+      "ponto-exit",
+      "ponto-adjust-toggle",
+      "ponto-live",
+      "ponto-today",
+      "ponto-week",
+      "ponto-balance",
+      "ponto-progress-text",
+      "ponto-progress-bar",
+      "ponto-goal",
+      "ponto-adjust-panel",
+      "ponto-adjust-form",
+      "ponto-adjust-id",
+      "ponto-adjust-date",
+      "ponto-adjust-hours",
+      "ponto-adjust-direction",
+      "ponto-adjust-note",
+      "ponto-adjust-submit",
+      "ponto-adjust-cancel",
+      "ponto-records",
+      "rf-chat-fab",
+      "rf-chat-badge",
+      "rf-chat-panel",
+      "rf-chat-dot",
+      "rf-chat-title",
+      "rf-chat-subtitle",
+      "rf-chat-mode-pill",
+      "rf-chat-back",
+      "rf-chat-logout",
+      "rf-chat-close",
+      "rf-chat-userbar",
+      "rf-chat-user-label",
+      "rf-chat-tabs",
+      "rf-chat-setup",
+      "rf-chat-auth",
+      "rf-chat-display",
+      "rf-chat-password",
+      "rf-chat-login",
+      "rf-chat-signup",
+      "rf-chat-auth-msg",
+      "rf-chat-messages-wrap",
+      "rf-chat-messages",
+      "rf-chat-compose",
+      "rf-chat-input",
+      "rf-chat-send",
+      "toast"
+    ]
+  },
+  "navigation": [
+    {
+      "dataView": "macros",
+      "panelId": "view-macros",
+      "panelExists": true
+    },
+    {
+      "dataView": "jira",
+      "panelId": "view-jira",
+      "panelExists": true
+    },
+    {
+      "dataView": "bancos",
+      "panelId": "view-bancos",
+      "panelExists": true
+    },
+    {
+      "dataView": "ocorrencias",
+      "panelId": "view-ocorrencias",
+      "panelExists": true
+    },
+    {
+      "dataView": "saldo",
+      "panelId": "view-saldo",
+      "panelExists": true
+    }
+  ],
+  "storage": {
+    "localStorage": [
+      {
+        "key": "rf_theme_v1",
+        "scope": "painel/tema"
+      },
+      {
+        "key": "rf_macros_spa_db_v2",
+        "scope": "painel/macros"
+      },
+      {
+        "key": "app_ponto_data",
+        "scope": "painel/controle de ponto"
+      },
+      {
+        "key": "rf_ocorrencias_uses_v1",
+        "scope": "painel/ocorrências"
+      },
+      {
+        "key": "rf_saldo_devedor_v3",
+        "scope": "painel/saldo devedor"
+      },
+      {
+        "key": "rf_chat_display_name_v1",
+        "scope": "painel/chat"
+      },
+      {
+        "key": "rf_chat_dm_unread_v1",
+        "scope": "painel/chat"
+      },
+      {
+        "key": "rf_chat_notif_perm_asked_v1",
+        "scope": "painel/chat"
+      },
+      {
+        "key": "rf_macros_blip_db_v2",
+        "scope": "bookmarklet/Blip"
+      },
+      {
+        "key": "rf_macro_uses_blip_v1",
+        "scope": "bookmarklet/Blip"
+      },
+      {
+        "key": "rf_widget_theme_v1",
+        "scope": "bookmarklet/Blip"
+      },
+      {
+        "key": "sb-<project-ref>-auth-token",
+        "scope": "Supabase SDK; nome derivado em runtime",
+        "dynamic": true
+      }
+    ],
+    "indexedDB": {
+      "database": "rf_unified_storage_v1",
+      "version": 1,
+      "objectStore": "handles",
+      "recordKey": "unified_json_handle"
+    }
+  },
+  "windowExposure": [
+    {
+      "name": "RFStorage",
+      "members": [
+        "notifyChange",
+        "downloadBackup",
+        "importBackup"
+      ],
+      "scope": "painel"
+    },
+    {
+      "name": "__RF_ASSISTANT_CLEANUP__",
+      "type": "função temporária de limpeza",
+      "scope": "bookmarklet/Blip"
+    }
+  ],
+  "staticContent": {
+    "file": "static-content.json",
+    "sha256": "cd8c29cf1351cb9e3d9f69855b8c5b852760445cabb01466daed7fc5db2d2b2f",
+    "counts": {
+      "bankHighlights": 11,
+      "banks": 93,
+      "occurrences": 55,
+      "jiraCards": 7,
+      "jiraNotes": 3,
+      "jiraItems": 10
+    }
+  },
+  "frozen": {
+    "bookmarkletCode": {
+      "sha256": "a68c4ad7b107e1c6dbc21b6ca269886bfe393a3a1daab0322a9bffe9ed986897",
+      "bytes": 17705,
+      "startLine": 3219,
+      "endLine": 3534
+    },
+    "syncPrefix": {
+      "value": "RF_SYNC_V2:",
+      "occurrences": 3
+    }
+  },
+  "supabase": {
+    "enabled": true,
+    "allowedEmailDomainConfigured": false,
+    "url": {
+      "redacted": "https://<project-ref>.supabase.co",
+      "length": 40,
+      "sha256": "93ecdd53eced24c7219c219a16e0c4bd6bd47da68e1b59b3d65cac054f0ced22"
+    },
+    "anonKey": {
+      "redacted": "<supabase-anon-key>",
+      "length": 208,
+      "sha256": "8286533bc2dad6b6776228c683ab94c87e5ab6ae248bccdcdcf34143cb7f5630"
+    },
+    "note": "Valores completos permanecem somente no index.html e não são copiados para o contrato."
+  },
+  "formats": {
+    "macroExport": {
+      "filename": "backup_macros.json",
+      "json": {
+        "kind": "rf-macros",
+        "version": 2,
+        "macros": "Array<{id, shortcut, content, favorite}>"
+      }
+    },
+    "macroImport": {
+      "accepted": [
+        "Array de macros",
+        "Objeto com campo macros"
+      ],
+      "validation": [
+        "máximo de 500 macros",
+        "id único",
+        "atalho único",
+        "atalho compatível com /^\\/[\\wÀ-ÿ-]+$/u",
+        "content string",
+        "favorite convertido para boolean"
+      ]
+    },
+    "syncClipboard": {
+      "prefix": "RF_SYNC_V2:",
+      "payload": {
+        "version": 2,
+        "macros": "Array de macros"
+      }
+    },
+    "fullBackup": {
+      "filenamePattern": "rodrigo-facilidades-backup-YYYY-MM-DD-HH-mm.json",
+      "jsonFields": [
+        "version",
+        "updatedAt",
+        "macros",
+        "ponto",
+        "ocorrencias_uses"
+      ],
+      "version": 2,
+      "explicitlyExcluded": [
+        "saldo devedor",
+        "tema selecionado",
+        "informações locais do chat"
+      ]
+    },
+    "fullBackupImport": {
+      "accepted": [
+        "formato unificado com campo macros",
+        "array de macros convertido para formato unificado"
+      ],
+      "writesOnly": [
+        "rf_macros_spa_db_v2",
+        "app_ponto_data",
+        "rf_ocorrencias_uses_v1"
+      ]
+    },
+    "saldoCsv": {
+      "filenamePattern": "saldo_devedor_YYYY-MM-DD.csv",
+      "separator": ";",
+      "encoding": "UTF-8 com BOM"
+    }
+  },
+  "macroSearch": {
+    "fieldPlaceholder": "Pesquisar por atalho ou conteúdo…",
+    "actualPredicate": "x.shortcut.toLocaleLowerCase('pt-BR').includes(query)",
+    "contentIsNotSearched": true
+  },
+  "fixtures": {
+    "macros": "fixtures/macros.json",
+    "saldo": "fixtures/saldo-devedor.json",
+    "ponto": "fixtures/ponto.json"
+  },
+  "expected": {
+    "macro-results.json": {
+      "sha256": "3c900d0d249745d173880c8f6fe63172c0513f38d54e458d22d147a43f5e3c5f",
+      "bytes": 5230
+    },
+    "saldo-results.json": {
+      "sha256": "ff7c09396ba4dcfca8de2b4495ce40e949e7518d1dc6cc91a57cd64b42292e68",
+      "bytes": 524
+    },
+    "ponto-results.json": {
+      "sha256": "19a9cb29a37e5558286658f1c4dcf7612fc2063e9d69361b4a0d75f4ecc9997d",
+      "bytes": 396
+    }
+  },
+  "visual": {
+    "computed-styles.json": {
+      "sha256": "24b4c47ea8aeaa97c454346017b0206e2be0732885a1e9410763b8cdca21d015",
+      "bytes": 12431
+    }
+  },
+  "frozenSourceBlocks": {
+    "bankHighlightsArray": {
+      "sha256": "d2de80a4cc274a4a2fbef1bdb77719896991bacbe7bb1a27b8f4f07567c5e6f1"
+    },
+    "banksArray": {
+      "sha256": "7784497817be6900649f0b69518bec8b86a0d3556ceddfbd78bafd39876092f5"
+    },
+    "occurrencesArray": {
+      "sha256": "8638747635114f4a5448a9c41f9ceb06d5c314a52511089a41f5dd6909c85a95"
+    },
+    "jiraPanel": {
+      "sha256": "106e628ac39f6dc67ce51b58135e7e485ee68b79582a30d5c3fbbd2fb8ed69ae"
+    },
+    "assistantSetup": {
+      "sha256": "e7ae2265fbef78810e86e22e3b63defa721354a0ab93d085ab6b92959076930f"
+    },
+    "backupModule": {
+      "sha256": "6926bdad8932b7e3e70b154d0d4e99bf16607f7fbedfade35d4834ae9c271f25"
+    },
+    "saldoModule": {
+      "sha256": "607a7cb28147a72bba4903f52636d32061c794e230e95fb042323ac8b6505191"
+    },
+    "pontoModule": {
+      "sha256": "e12eb3cd6409a4e272be3f432c3de6edf7cdc14fe78fe7317dd11e24a3ecaed4"
+    }
+  }
+}

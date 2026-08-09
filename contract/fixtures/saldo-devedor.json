@@ -1,0 +1,13 @@
+{
+  "description": "Dados financeiros inteiramente fictícios.",
+  "creditos": "01/08/2026;1234567;Em aberto;1000,00;1000,00",
+  "extrato": "Pagamento da parcela CCB: 1234567 R$ 200,00",
+  "descontos": "1234567;R$ 100,00",
+  "expected": {
+    "contratos": 1,
+    "saldoDevedor": "R$ 700,00",
+    "valorOriginal": "R$ 1.000,00",
+    "descontos": "R$ 100,00",
+    "pago": "R$ 200,00"
+  }
+}

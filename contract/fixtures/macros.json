@@ -1,0 +1,17 @@
+{
+  "description": "Macros exclusivamente fictícias para caracterização do HTML renderizado.",
+  "macros": [
+    {
+      "id": "fixture-macro-001",
+      "shortcut": "/fixture_favorita",
+      "content": "Atendimento fictício #{ticket} em {data} às {hora}.",
+      "favorite": true
+    },
+    {
+      "id": "fixture-macro-002",
+      "shortcut": "/fixture_simples",
+      "content": "Conteúdo de teste sem informações reais.",
+      "favorite": false
+    }
+  ]
+}

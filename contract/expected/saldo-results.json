@@ -1,0 +1,27 @@
+{
+  "alerts": "",
+  "detections": {
+    "creditos": "1 contrato(s) identificado(s)",
+    "descontos": "1 desconto(s) localizado(s)",
+    "pagamentos": "1 pagamento(s) de CCB confirmado(s)"
+  },
+  "kpis": {
+    "contratos": "1",
+    "descontos": "R$ 100,00",
+    "pagar": "R$ 1.000,00",
+    "pago": "R$ 200,00",
+    "saldo": "R$ 700,00"
+  },
+  "rowCount": 1,
+  "rows": [
+    [
+      "01/08/2026",
+      "1234567",
+      "R$ 1.000,00",
+      "-R$ 100,00",
+      "R$ 200,00",
+      "R$ 700,00",
+      "Parcial"
+    ]
+  ]
+}
