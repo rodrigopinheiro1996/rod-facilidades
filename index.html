@@ -525,6 +525,11 @@
 
     input::placeholder, textarea::placeholder { color: var(--muted-dim); }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.85);
+  cursor: pointer;
+}
+
     input:focus, select:focus, textarea:focus {
       border-color: var(--focus-border);
       box-shadow: var(--focus-ring);
@@ -929,6 +934,244 @@
       font-size: 13px;
     }
 
+    /* ── SALDO DEVEDOR ── */
+    .sd-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    
+    .sd-paste-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .sd-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .sd-box > label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      height: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sd-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .sd-box textarea {
+      flex: 1;
+      min-height: 140px;
+      resize: vertical;
+      font-size: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xs);
+      color: var(--text);
+      padding: 12px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-strong) var(--bg-elevated);
+    }
+
+    .sd-box textarea::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    .sd-box textarea::-webkit-scrollbar-track {
+      background: var(--bg-elevated);
+      border-radius: 4px;
+    }
+
+    .sd-box textarea::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 4px;
+    }
+
+    .sd-box textarea::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
+
+    .sd-box textarea:focus {
+      border-color: var(--focus-border);
+      box-shadow: var(--focus-ring);
+    }
+
+    .sd-detect {
+      font-size: 11.5px;
+      font-weight: 500;
+      min-height: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+    }
+    .sd-detect svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .sd-detect.ok { color: var(--green); }
+    .sd-detect.warn { color: var(--amber); }
+    .sd-detect.err { color: var(--red); }
+
+    .sd-filter-bar {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .sd-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .sd-kpi {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .sd-kpi:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+
+    .sd-kpi-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .sd-kpi-copy {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .sd-kpi-copy:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .sd-kpi-copy svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .sd-kpi span { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+    .sd-kpi strong { font-size: 18px; font-variant-numeric: tabular-nums; color: var(--text); font-weight: 700; }
+    .sd-kpi-main { background: var(--red-dim); border-color: rgba(248, 113, 113, 0.28); }
+    .sd-kpi-main strong { font-size: 24px; color: #fca5a5; }
+
+    .sd-table-wrap {
+      margin-top: 18px;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .sd-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .sd-table th, .sd-table td { padding: 11px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .sd-table th {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+      background: var(--bg-elevated);
+      position: sticky;
+      top: 0;
+      font-weight: 650;
+    }
+    .sd-table td.num, .sd-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .sd-table tbody tr { transition: background 0.12s ease; }
+    .sd-table tbody tr:hover { background: var(--card-raised); }
+    
+    .sd-ccb {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-weight: 600;
+      color: var(--accent);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sd-ccb:hover { text-decoration: underline; }
+
+    .sd-status {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .sd-status.aberto { background: var(--red-dim); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.25); }
+    .sd-status.parcial { background: var(--amber-dim); color: #fcd34d; border: 1px solid rgba(251, 191, 36, 0.25); }
+    .sd-status.quitado { background: var(--green-dim); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.25); }
+
+    .sd-empty {
+      margin-top: 22px;
+      padding: 38px 20px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: var(--bg-elevated);
+    }
+    .sd-empty svg { width: 32px; height: 32px; stroke-width: 1.5; color: var(--muted-dim); }
+    .sd-empty p { font-size: 13.5px; margin: 10px 0 0; }
+
+    @media (max-width: 960px) {
+      .sd-paste-grid { grid-template-columns: 1fr; }
+      .sd-filter-bar { flex-direction: column; align-items: stretch; }
+      .sd-kpi-main strong { font-size: 20px; }
+    }
+
     /* ── CONTROLE DE PONTO ── */
     .ponto-card {
       padding: 22px;
@@ -1012,7 +1255,7 @@
     .ponto-metric {
       padding: 12px 6px;
       border: 1px solid var(--border);
-      border-radius: 9px;
+      border-radius: 99px;
       background: var(--bg-elevated);
       text-align: center;
       transition: border-color 0.15s ease;
@@ -1204,6 +1447,416 @@
       body { padding: 14px; }
     }
 
+    /* ── CHAT INTERNO ── */
+    .rf-chat-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 90;
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 16px;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-color);
+      box-shadow: var(--btn-primary-shadow), var(--shadow-lg);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .rf-chat-fab:hover { transform: translateY(-2px) scale(1.04); filter: brightness(1.06); }
+    .rf-chat-fab:active { transform: scale(0.97); }
+    .rf-chat-fab svg { width: 22px; height: 22px; stroke-width: 2; }
+    .rf-chat-fab[data-open="true"] { display: none; }
+    .rf-chat-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font: 700 10px/18px var(--font);
+      text-align: center;
+      display: none;
+    }
+    .rf-chat-badge[data-show="true"] { display: block; }
+
+    .rf-chat-panel {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 95;
+      width: min(380px, calc(100vw - 24px));
+      height: min(560px, calc(100vh - 48px));
+      display: none;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .rf-chat-panel[data-open="true"] { display: flex; }
+
+    .rf-chat-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+    }
+    .rf-chat-head-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .rf-chat-head-title strong {
+      font-size: 13.5px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .rf-chat-head-title span {
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+    }
+    .rf-chat-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted-dim);
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.04);
+    }
+    .rf-chat-status-dot[data-online="true"] {
+      background: var(--green);
+      box-shadow: 0 0 0 3px var(--green-dim), 0 0 10px rgba(52,211,153,0.35);
+    }
+    .rf-chat-head-actions { display: flex; gap: 4px; align-items: center; }
+    .rf-chat-icon-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.12s ease;
+    }
+    .rf-chat-icon-btn:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .rf-chat-icon-btn svg { width: 16px; height: 16px; stroke-width: 2; }
+
+    .rf-chat-body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-chat-setup, .rf-chat-auth, .rf-chat-messages-wrap {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 14px;
+    }
+
+    .rf-chat-setup h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--text);
+    }
+    .rf-chat-setup p, .rf-chat-setup li {
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+    .rf-chat-setup ol { margin: 10px 0; padding-left: 18px; }
+    .rf-chat-setup li { margin: 6px 0; }
+    .rf-chat-setup code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+    .rf-chat-setup .rf-chat-warn {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(251,191,36,0.25);
+      background: var(--amber-dim);
+      color: #fde68a;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .rf-chat-auth-card {
+      margin: auto 0;
+      padding: 4px 2px 12px;
+    }
+    .rf-chat-auth-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--text);
+    }
+    .rf-chat-auth-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+    .rf-chat-field { margin-bottom: 12px; }
+    .rf-chat-field label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .rf-chat-field input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xs);
+      background: var(--bg);
+      color: var(--text);
+      font: 400 13px var(--font);
+      outline: none;
+    }
+    .rf-chat-field input:focus {
+      border-color: var(--focus-border);
+      box-shadow: var(--focus-ring);
+    }
+    .rf-chat-auth-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .rf-chat-auth-actions .btn { width: 100%; justify-content: center; }
+    .rf-chat-auth-msg {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      min-height: 18px;
+    }
+    .rf-chat-auth-msg[data-type="error"] { color: #fca5a5; }
+    .rf-chat-auth-msg[data-type="ok"] { color: #6ee7b7; }
+
+    .rf-chat-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 8px;
+    }
+    .rf-chat-empty {
+      margin: 40px 12px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .rf-chat-msg {
+      max-width: 92%;
+      padding: 8px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      align-self: flex-start;
+    }
+    .rf-chat-msg.mine {
+      align-self: flex-end;
+      background: var(--accent-dim);
+      border-color: var(--accent-border);
+    }
+    .rf-chat-msg-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .rf-chat-msg-author {
+      font-size: 11px;
+      font-weight: 650;
+      color: var(--accent);
+    }
+    .rf-chat-msg-author[data-clickable="true"] {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      transition: text-decoration-color 0.12s ease, color 0.12s ease;
+    }
+    .rf-chat-msg-author[data-clickable="true"]:hover {
+      text-decoration-color: var(--accent);
+      color: #a8f75a;
+    }
+    [data-theme="classic"] .rf-chat-msg-author[data-clickable="true"]:hover {
+      color: #67e8f9;
+    }
+    .rf-chat-mode-pill {
+      display: none;
+      margin-top: 2px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+    }
+    .rf-chat-mode-pill[data-show="true"] { display: block; }
+    .rf-chat-back[hidden] { display: none !important; }
+
+    .rf-chat-tabs {
+      display: none;
+      gap: 6px;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      overflow-x: auto;
+      flex-shrink: 0;
+      scrollbar-width: thin;
+    }
+    .rf-chat-tabs[data-show="true"] { display: flex; }
+    .rf-chat-tabs::-webkit-scrollbar { height: 4px; }
+    .rf-chat-tabs::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+    }
+    .rf-chat-tab {
+      position: relative;
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 140px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      color: var(--muted);
+      font: 600 11.5px var(--font);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.12s ease;
+    }
+    .rf-chat-tab:hover {
+      color: var(--text);
+      border-color: var(--border-strong);
+      background: var(--card-raised);
+    }
+    .rf-chat-tab[data-active="true"] {
+      color: var(--accent);
+      border-color: var(--accent-border);
+      background: var(--accent-dim);
+      box-shadow: inset 0 0 0 1px var(--accent-border);
+    }
+    .rf-chat-tab-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .rf-chat-tab-badge {
+      display: none;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font: 700 10px/16px var(--font);
+      text-align: center;
+    }
+    .rf-chat-tab-badge[data-show="true"] { display: inline-block; }
+
+    .rf-chat-msg-time {
+      font-size: 10px;
+      color: var(--muted-dim);
+      font-variant-numeric: tabular-nums;
+    }
+    .rf-chat-msg-text {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .rf-chat-compose {
+      border-top: 1px solid var(--border);
+      padding: 10px 12px;
+      background: var(--bg-elevated);
+      display: none;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    .rf-chat-compose[data-show="true"] { display: flex; }
+    .rf-chat-compose textarea {
+      flex: 1;
+      min-height: 40px;
+      max-height: 110px;
+      resize: none;
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 13px var(--font);
+      line-height: 1.4;
+      outline: none;
+    }
+    .rf-chat-compose textarea:focus {
+      border-color: var(--focus-border);
+      box-shadow: var(--focus-ring);
+    }
+    .rf-chat-send {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-color);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: var(--btn-primary-shadow);
+    }
+    .rf-chat-send:hover { filter: brightness(1.08); }
+    .rf-chat-send:disabled { opacity: 0.45; cursor: not-allowed; filter: none; }
+    .rf-chat-send svg { width: 18px; height: 18px; stroke-width: 2; }
+
+    .rf-chat-userbar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+    .rf-chat-userbar[data-show="true"] { display: flex; }
+    .rf-chat-userbar strong { color: var(--text-secondary); font-weight: 600; }
+
     .hidden { display: none !important; }
   </style>
 </head>
@@ -1243,7 +1896,7 @@
         <p>2. No Blip Desk, abra um atendimento e clique no favorito. Após alterar o assistente no painel, arraste o botão de novo para atualizar.</p>
       </div>
       <div class="sync-zone-actions">
-        <a id="bookmarklet" class="btn bookmarklet" href="#" title="Bookmarklet: código completo embutido no favorito"><i data-lucide="bookmark"></i> Assistente</a>
+        <a id="bookmarklet" class="btn bookmarklet" href="#" title="Bookmarklet: código completo embutido no favorito"><i data-lucide="bookmark"></i> 👽 Assistente</a>
         <button id="sync" class="btn sync-btn"><i data-lucide="clipboard-copy"></i> Copiar macros para o Blip</button>
       </div>
       <p id="sync-status" class="sync-status" role="status" aria-live="polite" data-state="pending">Altere ou cadastre suas macros e clique em copiar para atualizar o Blip.</p>
@@ -1257,6 +1910,7 @@
         <button class="nav-tab" data-view="jira" role="tab"><i data-lucide="book-open"></i> Guia de Chamados do JIRA</button>
         <button class="nav-tab" data-view="bancos" role="tab"><i data-lucide="landmark"></i> Códigos dos Bancos</button>
         <button class="nav-tab" data-view="ocorrencias" role="tab"><i data-lucide="clipboard-list"></i> Tipos de ocorrência</button>
+        <button class="nav-tab" data-view="saldo" role="tab"><i data-lucide="wallet"></i> Saldo Devedor</button>
       </nav>
 
       <!-- PAINEL 1: MACROS -->
@@ -1285,7 +1939,7 @@
                 <textarea id="macro-content" maxlength="10000" placeholder="Olá! O protocolo é {ticket}. Atendimento realizado em {data} às {hora}." required></textarea>
               </div>
               <label class="check">
-                <input id="macro-favorite" type="checkbox"> Fixar entre as favoritas do widget
+                <input id="macro-favorite" type="checkbox"> Fixar entre as favoritas do Assistente
               </label>
               <div style="display:flex; gap:8px; margin-top:16px;">
                 <button class="btn primary" style="flex:1" type="submit">Salvar macro</button>
@@ -1522,6 +2176,109 @@
         </section>
       </div>
 
+      <!-- PAINEL 5: SALDO DEVEDOR -->
+      <div id="view-saldo" class="view-panel">
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2 class="title">Calculadora de Saldo Devedor</h2>
+              <div class="hint">Cole os dados do Mêntore (Crédito e Extrato). O leitor detecta os contratos e cruza os pagamentos automaticamente.</div>
+            </div>
+            <div class="sd-actions">
+              <button id="sd-processar" class="btn primary" type="button"><i data-lucide="calculator"></i> Processar</button>
+              <button id="sd-exportar" class="btn" type="button"><i data-lucide="download"></i> Exportar CSV</button>
+              <button id="sd-limpar" class="btn danger" type="button"><i data-lucide="eraser"></i> Limpar</button>
+            </div>
+          </div>
+
+          <div class="sd-paste-grid">
+            <div class="sd-box">
+              <label for="sd-creditos">1. Crédito HUB <span class="sd-tag">Crédito › Ativos</span></label>
+              <textarea id="sd-creditos" placeholder="Selecione a tabela na aba Crédito -> Ativos no Mêntore, Ctrl+C e cole aqui."></textarea>
+              <div class="sd-detect" id="sd-detect-creditos"></div>
+            </div>
+            <div class="sd-box">
+              <label for="sd-pagamentos">2. Pagamentos do Extrato <span class="sd-tag">Extrato › Movimentações</span></label>
+              <textarea id="sd-pagamentos" placeholder="Copie as linhas de movimentação do Extrato no Mêntore (&quot;Pagamento da parcela ... CCB: 6304138&quot;) e cole aqui."></textarea>
+              <div class="sd-detect" id="sd-detect-pagamentos"></div>
+            </div>
+            <div class="sd-box">
+              <label for="sd-descontos">3. Descontos <span class="sd-tag">opcional</span></label>
+              <textarea id="sd-descontos" placeholder="Cole a tabela de descontos, se houver."></textarea>
+              <div class="sd-detect" id="sd-detect-descontos"></div>
+            </div>
+          </div>
+
+          <div class="sd-filter-bar">
+            <div style="flex: 1; max-width: 320px;">
+              <input id="sd-search" type="search" placeholder="Pesquisar por CCB ou status…">
+            </div>
+            <label class="check" style="font-size: 12.5px;">
+              <input id="sd-only-open" type="checkbox" checked> Exibir apenas contratos em aberto / com saldo devedor
+            </label>
+          </div>
+
+          <div class="sd-kpis" id="sd-kpis" hidden>
+            <div class="sd-kpi sd-kpi-main">
+              <div class="sd-kpi-header">
+                <span>Saldo Devedor Total</span>
+                <button type="button" class="sd-kpi-copy" data-target="sd-kpi-saldo" title="Copiar Saldo Devedor Total"><i data-lucide="copy"></i></button>
+              </div>
+              <strong id="sd-kpi-saldo">R$ 0,00</strong>
+            </div>
+            <div class="sd-kpi">
+              <div class="sd-kpi-header">
+                <span>Valor a Pagar Original</span>
+                <button type="button" class="sd-kpi-copy" data-target="sd-kpi-pagar" title="Copiar Valor a Pagar Original"><i data-lucide="copy"></i></button>
+              </div>
+              <strong id="sd-kpi-pagar">R$ 0,00</strong>
+            </div>
+            <div class="sd-kpi">
+              <div class="sd-kpi-header">
+                <span>Descontos</span>
+                <button type="button" class="sd-kpi-copy" data-target="sd-kpi-desc" title="Copiar Descontos"><i data-lucide="copy"></i></button>
+              </div>
+              <strong id="sd-kpi-desc">R$ 0,00</strong>
+            </div>
+            <div class="sd-kpi">
+              <div class="sd-kpi-header">
+                <span>Já Pago (Extrato)</span>
+                <button type="button" class="sd-kpi-copy" data-target="sd-kpi-pago" title="Copiar Já Pago"><i data-lucide="copy"></i></button>
+              </div>
+              <strong id="sd-kpi-pago">R$ 0,00</strong>
+            </div>
+            <div class="sd-kpi">
+              <span>Contratos Ativos</span>
+              <strong id="sd-kpi-qtd">0</strong>
+            </div>
+          </div>
+
+          <div id="sd-alertas"></div>
+
+          <div class="sd-table-wrap" id="sd-table-wrap" hidden>
+            <table class="sd-table">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>CCB</th>
+                  <th class="num">Valor a Pagar</th>
+                  <th class="num">Desconto</th>
+                  <th class="num">Já Pago (Extrato)</th>
+                  <th class="num">Saldo Devedor</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="sd-tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="sd-empty" id="sd-empty">
+            <i data-lucide="clipboard-paste"></i>
+            <p>Cole as tabelas de Crédito e Extrato do Mêntore nos campos acima para calcular o saldo devedor.</p>
+          </div>
+        </section>
+      </div>
+
     </section>
 
     <!-- CONTROLE DE PONTO -->
@@ -1608,6 +2365,90 @@
     </aside>
   </div>
 </main>
+
+<!-- CHAT INTERNO DA EQUIPE -->
+<button type="button" id="rf-chat-fab" class="rf-chat-fab" title="Chat da equipe" aria-label="Abrir chat da equipe" data-open="false">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+  <span id="rf-chat-badge" class="rf-chat-badge" data-show="false">0</span>
+</button>
+
+<aside id="rf-chat-panel" class="rf-chat-panel" data-open="false" aria-label="Chat da equipe">
+  <div class="rf-chat-head">
+    <div class="rf-chat-head-title">
+      <span id="rf-chat-dot" class="rf-chat-status-dot" data-online="false" aria-hidden="true"></span>
+      <div>
+        <strong id="rf-chat-title">Chat da equipe</strong>
+        <span id="rf-chat-subtitle">Rodrigo Facilidades</span>
+        <span id="rf-chat-mode-pill" class="rf-chat-mode-pill" data-show="false">Privado · só vocês dois veem</span>
+      </div>
+    </div>
+    <div class="rf-chat-head-actions">
+      <button type="button" id="rf-chat-back" class="rf-chat-icon-btn rf-chat-back" title="Voltar ao chat da equipe" aria-label="Voltar ao chat da equipe" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </button>
+      <button type="button" id="rf-chat-logout" class="rf-chat-icon-btn" title="Sair" aria-label="Sair" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+      </button>
+      <button type="button" id="rf-chat-close" class="rf-chat-icon-btn" title="Fechar" aria-label="Fechar chat" style="color:var(--text-secondary)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="rf-chat-userbar" class="rf-chat-userbar" data-show="false">
+    <span>Conectado como <strong id="rf-chat-user-label">—</strong></span>
+  </div>
+
+  <div id="rf-chat-tabs" class="rf-chat-tabs" data-show="false" role="tablist" aria-label="Conversas"></div>
+
+  <div class="rf-chat-body">
+    <div id="rf-chat-setup" class="rf-chat-setup">
+      <h3>Configuração necessária</h3>
+      <p>O chat usa <strong>Supabase</strong> (plano gratuito). A chave anônima pode ficar no código — a proteção real vem de <strong>login + RLS</strong>.</p>
+      <ol>
+        <li>Crie um projeto em <code>supabase.com</code></li>
+        <li>Em <strong>SQL Editor</strong>, rode o script SQL do comentário no final desta página</li>
+        <li>Em <strong>Authentication → Providers</strong>, ative Email</li>
+        <li>Em <strong>Project Settings → API</strong>, copie URL e <code>anon public</code> key</li>
+        <li>Cole em <code>RF_CHAT_CONFIG</code> no JavaScript do chat</li>
+      </ol>
+      <div class="rf-chat-warn">
+        <strong>Segurança:</strong> nunca compartilhe dados de clientes, senhas ou tokens neste chat. Use apenas para alinhamento interno. Prefira Slack/Teams/Discord da empresa para assuntos sensíveis.
+      </div>
+    </div>
+
+    <div id="rf-chat-auth" class="rf-chat-auth" hidden>
+      <div class="rf-chat-auth-card">
+        <h3>Entrar no chat</h3>
+        <p>Use um <strong>nome de usuário</strong> e uma senha. Não é necessário e-mail. Escolha um nome único na equipe.</p>
+        <div class="rf-chat-field">
+          <label for="rf-chat-display">Nome de usuário</label>
+          <input id="rf-chat-display" type="text" maxlength="40" autocomplete="username" placeholder="Ex.: rodrigo" required>
+        </div>
+        <div class="rf-chat-field">
+          <label for="rf-chat-password">Senha</label>
+          <input id="rf-chat-password" type="password" autocomplete="current-password" placeholder="Mín. 6 caracteres">
+        </div>
+        <div class="rf-chat-auth-actions">
+          <button type="button" id="rf-chat-login" class="btn primary">Entrar</button>
+          <button type="button" id="rf-chat-signup" class="btn">Criar conta</button>
+        </div>
+        <p id="rf-chat-auth-msg" class="rf-chat-auth-msg" role="status"></p>
+      </div>
+    </div>
+
+    <div id="rf-chat-messages-wrap" class="rf-chat-messages-wrap" hidden>
+      <div id="rf-chat-messages" class="rf-chat-messages"></div>
+    </div>
+  </div>
+
+  <form id="rf-chat-compose" class="rf-chat-compose" data-show="false" autocomplete="off">
+    <textarea id="rf-chat-input" rows="1" maxlength="2000" placeholder="Mensagem para a equipe…" disabled></textarea>
+    <button type="submit" id="rf-chat-send" class="rf-chat-send" disabled title="Enviar" aria-label="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+    </button>
+  </form>
+</aside>
 
 <div id="toast" role="status" aria-live="polite"></div>
 
@@ -2052,10 +2893,10 @@
     $('editor-title').textContent = 'Nova macro';
   }
 
-  function render() {
+function render() {
     const query = $('search-macro').value.trim().toLocaleLowerCase('pt-BR');
     const root = $('macro-library');
-    const list = macros.filter(x => !query || x.shortcut.toLocaleLowerCase('pt-BR').includes(query) || x.content.toLocaleLowerCase('pt-BR').includes(query));
+    const list = macros.filter(x => !query || x.shortcut.toLocaleLowerCase('pt-BR').includes(query));
     
     $('macro-count').textContent = `${list.length} de ${macros.length} macro(s) disponível(is)`;
     
@@ -2638,7 +3479,30 @@
     const today = localDate();
     const open = openPunch(today);
     const todayMins = workedMinutes(today, true);
-    const weekMins = weekDates().reduce((s, d) => s + workedMinutes(d, d === today), 0);
+    
+    // Soma batidas da semana atual + TODOS os ajustes manuais cadastrados (qualquer data)
+    const currentWeekPunchMins = weekDates().reduce((s, d) => {
+      let mins = 0, op = null;
+      for (const r of punchRecords(d)) {
+        if (r.kind === 'entry') op = r;
+        else if (op) {
+          const diff = Math.round((new Date(r.at) - new Date(op.at)) / 60000);
+          if (diff > 0) mins += diff;
+          op = null;
+        }
+      }
+      if (d === today && op) {
+        const diff = Math.round((Date.now() - new Date(op.at)) / 60000);
+        if (diff > 0) mins += diff;
+      }
+      return s + mins;
+    }, 0);
+
+    const allAdjustments = data.records
+      .filter(r => r.type === 'adjustment')
+      .reduce((s, r) => s + r.minutes, 0);
+
+    const weekMins = currentWeekPunchMins + allAdjustments;
     const balance = weekMins - WEEKLY_GOAL_MINUTES;
     const progress = Math.max(0, Math.min(100, (weekMins / WEEKLY_GOAL_MINUTES) * 100));
 
@@ -2681,13 +3545,16 @@
   }
 
   function renderRecords() {
-    const dates = new Set(weekDates());
-    const records = data.records.filter(r => dates.has(r.type === 'punch' ? localDate(r.at) : r.date))
-                                .sort((a,b) => (b.type === 'punch' ? new Date(b.at).getTime() : new Date(b.date+'T12:00:00').getTime()) - (a.type === 'punch' ? new Date(a.at).getTime() : new Date(a.date+'T12:00:00').getTime()));
+    // Exibe todos os registros ordenados do mais recente para o mais antigo
+    const records = data.records.slice().sort((a,b) => {
+      const timeA = a.type === 'punch' ? new Date(a.at).getTime() : new Date(a.date+'T12:00:00').getTime();
+      const timeB = b.type === 'punch' ? new Date(b.at).getTime() : new Date(b.date+'T12:00:00').getTime();
+      return timeB - timeA;
+    });
 
-    el.records.innerHTML = '<p class="ponto-records-title">Movimentações desta semana</p>';
+    el.records.innerHTML = '<p class="ponto-records-title">Histórico de movimentações</p>';
     if (!records.length) {
-      el.records.innerHTML += '<p style="color:var(--muted);font-size:11px;padding:6px 0;">Nenhum registro nesta semana.</p>';
+      el.records.innerHTML += '<p style="color:var(--muted);font-size:11px;padding:6px 0;">Nenhum registro encontrado.</p>';
       return;
     }
 
@@ -3107,32 +3974,1285 @@
 })();
 </script>
 
+<!-- SCRIPT 5: SALDO DEVEDOR POR CCB (PARSER INTELIGENTE HÍBRIDO) -->
+<script>
+(() => {
+  'use strict';
+  const LS_KEY = 'rf_saldo_devedor_v3';
+  const $ = id => document.getElementById(id);
+  const brl = n => (Number(n) || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+  let processedRows = [];
+
+  function notify(msg, type = 'success') {
+    const node = $('toast');
+    if (!node) return;
+    node.textContent = msg;
+    node.style.background = type === 'error' ? 'var(--red)' : type === 'warn' ? 'var(--amber)' : 'var(--toast-bg)';
+    node.style.color = type === 'error' ? '#fff' : 'var(--toast-color)';
+    node.style.display = 'block';
+    setTimeout(() => node.style.display = 'none', 3000);
+  }
+
+  function parseMoney(raw) {
+    if (raw == null) return null;
+    if (typeof raw === 'number') return isNaN(raw) ? null : raw;
+    let s = String(raw).trim();
+    if (!s) return null;
+
+    const isNeg = s.includes('-') || /^\(.*\)$/.test(s);
+    s = s.replace(/r\$/ig, '').replace(/[^\d,.-]/g, '');
+    if (!/\d/.test(s)) return null;
+
+    const lastComma = s.lastIndexOf(',');
+    const lastDot = s.lastIndexOf('.');
+
+    if (lastComma > -1 && lastDot > -1) {
+      s = lastComma > lastDot ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
+    } else if (lastComma > -1) {
+      s = s.replace(/\./g, '').replace(',', '.');
+    } else if (lastDot > -1) {
+      const parts = s.split('.');
+      if (parts.length === 2 && parts[1].length === 3 && parts[0].length <= 3) {
+        s = s.replace(/\./g, '');
+      }
+    }
+
+    s = s.replace(/[^\d.-]/g, '');
+    const n = parseFloat(s);
+    if (isNaN(n)) return null;
+    return isNeg ? -Math.abs(n) : Math.abs(n);
+  }
+
+  function parseCreditos(text) {
+    if (!text || !text.trim()) return [];
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l !== '');
+    const records = [];
+    const seenCcbs = new Set();
+
+    for (const line of lines) {
+      // Tab / ; / 2+ spaces first; fallback to single-space tokens
+      let parts = line.split(/\t|;| {2,}/).map(p => p.trim()).filter(Boolean);
+      if (parts.length < 3) {
+        parts = line.split(/\s+/).map(p => p.trim()).filter(Boolean);
+      }
+      if (parts.length < 2) continue;
+
+      let date = '', ccb = '', status = '', valor = null, valorPagar = null;
+      const joined = parts.join(' ');
+
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        if (!date && /^\d{2}\/\d{2}\/\d{4}$/.test(p)) { date = p; continue; }
+        if (!ccb && /^\d{5,12}$/.test(p)) { ccb = p; continue; }
+        if (!status) {
+          if (/^em$/i.test(p) && parts[i + 1] && /^aberto$/i.test(parts[i + 1])) {
+            status = 'Em aberto';
+            i++;
+            continue;
+          }
+          if (/^(pago|inadimplente|cancelado)$/i.test(p) || /em\s+aberto|pago|inadimplente|cancelado/i.test(p)) {
+            status = p;
+            continue;
+          }
+        }
+        const m = parseMoney(p);
+        if (m !== null && !/^\d{5,12}$/.test(p) && !/^\d{1,2}:\d{2}$/.test(p)) {
+          if (valor === null) valor = m;
+          else if (valorPagar === null) valorPagar = m;
+        }
+      }
+
+      if (!status && /em\s+aberto/i.test(joined)) status = 'Em aberto';
+      else if (!status && /\bpago\b/i.test(joined)) status = 'Pago';
+
+      if (ccb && !seenCcbs.has(ccb)) {
+        seenCcbs.add(ccb);
+        records.push({
+          date: date || '—',
+          ccb,
+          status: status || 'Em Aberto',
+          valor: valor || 0,
+          valorPagar: valorPagar !== null ? valorPagar : (valor || 0)
+        });
+      }
+    }
+
+    // Multiline / stacked fallback
+    if (records.length === 0) {
+      let i = 0;
+      while (i < lines.length) {
+        const line = lines[i];
+        const isDate = /^\d{2}\/\d{2}\/\d{4}$/.test(line);
+        const isCcb = /^\d{5,12}$/.test(line);
+
+        if (isDate || isCcb) {
+          let date = isDate ? line : '—';
+          let ccb = isCcb ? line : '';
+          let status = 'Em Aberto';
+          let valor = null;
+          let valorPagar = null;
+
+          let j = 1;
+          while (j <= 8 && (i + j) < lines.length) {
+            const nextLine = lines[i + j];
+            if (j > 1 && (/^\d{2}\/\d{2}\/\d{4}$/.test(nextLine) || (/^\d{5,12}$/.test(nextLine) && ccb))) break;
+
+            if (!date && /^\d{2}\/\d{2}\/\d{4}$/.test(nextLine)) date = nextLine;
+            else if (!ccb && /^\d{5,12}$/.test(nextLine)) ccb = nextLine;
+            else if (/em\s*aberto|pago|inadimplente|cancelado/i.test(nextLine)) status = nextLine;
+            else {
+              const m = parseMoney(nextLine);
+              if (m !== null && !/^\d{5,12}$/.test(nextLine)) {
+                if (valor === null) valor = m;
+                else if (valorPagar === null) valorPagar = m;
+              }
+            }
+            j++;
+          }
+
+          if (ccb && !seenCcbs.has(ccb)) {
+            seenCcbs.add(ccb);
+            records.push({
+              date: date || '—',
+              ccb,
+              status: status || 'Em Aberto',
+              valor: valor || 0,
+              valorPagar: valorPagar !== null ? valorPagar : (valor || 0)
+            });
+            i += Math.max(1, j - 1);
+          } else {
+            i++;
+          }
+        } else {
+          i++;
+        }
+      }
+    }
+
+    return records;
+  }
+
+  function parseExtrato(text) {
+    if (!text || !text.trim()) return [];
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l !== '');
+    const payments = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (/saldo do dia/i.test(line)) continue;
+
+      const ccbMatch = line.match(/ccb\s*[:.-]?\s*(\d{4,12})/i);
+      if (!ccbMatch) continue;
+
+      const ccb = ccbMatch[1];
+      const blockLines = [];
+      if (i > 0 && !lines[i - 1].match(/ccb\s*[:.-]?\s*(\d{4,12})/i)) blockLines.push(lines[i - 1]);
+      blockLines.push(line);
+      for (let next = 1; next <= 3 && (i + next) < lines.length; next++) {
+        const nextLine = lines[i + next];
+        if (nextLine.match(/ccb\s*[:.-]?\s*(\d{4,12})/i) || /saldo do dia/i.test(nextLine)) break;
+        blockLines.push(nextLine);
+      }
+
+      const blockText = blockLines.join(' ');
+      if (/Falhou|cancelad|estornad|recusad|nao confirmado|não confirmado|erro/i.test(blockText)) continue;
+
+      let value = 0;
+      const moneyInBlock = blockText.match(/r\$\s*[\d.,]+|[\d]+[.,]\d{2}/gi);
+      if (moneyInBlock) {
+        for (let mi = moneyInBlock.length - 1; mi >= 0; mi--) {
+          const m = parseMoney(moneyInBlock[mi]);
+          if (m !== null && m !== 0) { value = Math.abs(m); break; }
+        }
+      }
+
+      if (value === 0) {
+        for (const bline of blockLines) {
+          const parts = bline.split(/\t|;| {2,}|\s+/).map(p => p.trim()).filter(Boolean);
+          for (let k = parts.length - 1; k >= 0; k--) {
+            const p = parts[k];
+            if (p.includes(ccb)) continue;
+            const m = parseMoney(p);
+            if (m !== null && m !== 0 && !/^\d{1,2}:\d{2}$/.test(p) && !/^\d{2}\/\d{2}\/\d{4}$/.test(p)) {
+              value = Math.abs(m);
+              break;
+            }
+          }
+          if (value > 0) break;
+        }
+      }
+
+      if (value > 0) payments.push({ ccb, value, rawLine: line });
+    }
+
+    return payments;
+  }
+
+  function parseDescontos(text) {
+    if (!text || !text.trim()) return [];
+    const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l !== '');
+    const discounts = [];
+
+    for (const line of lines) {
+      const ccbMatch = line.match(/(?:ccb\s*[:.-]?\s*|^|\b)(\d{5,12})\b/i);
+      if (!ccbMatch) continue;
+      const ccb = ccbMatch[1];
+      let value = 0;
+
+      const moneyMatch = line.match(/r\$\s*[\d.,]+|[\d]+[.,]\d{2}/gi);
+      if (moneyMatch) {
+        for (let mi = moneyMatch.length - 1; mi >= 0; mi--) {
+          const m = parseMoney(moneyMatch[mi]);
+          if (m !== null && m > 0) { value = m; break; }
+        }
+      }
+
+      if (value === 0) {
+        const parts = line.split(/\t|;| {2,}|\s+/).map(p => p.trim()).filter(Boolean);
+        for (let i = parts.length - 1; i >= 0; i--) {
+          if (parts[i].includes(ccb)) continue;
+          const m = parseMoney(parts[i]);
+          if (m !== null && m > 0) { value = m; break; }
+        }
+      }
+
+      if (value > 0) discounts.push({ ccb, value });
+    }
+    return discounts;
+  }
+
+  async function execCopy(textToCopy) {
+    const text = String(textToCopy == null ? '' : textToCopy);
+    let success = false;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        success = true;
+      }
+    } catch (err) {}
+
+    if (!success) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { success = document.execCommand('copy'); } catch (err) { success = false; }
+      ta.remove();
+    }
+    return success;
+  }
+
+  async function copyKpiValue(targetId) {
+    const el = $(targetId);
+    if (!el) { notify('Valor não encontrado.', 'error'); return; }
+    // ONLY plain text — never HTML
+    const clean = (el.textContent || el.innerText || '').trim();
+    if (!clean) { notify('Nada para copiar.', 'warn'); return; }
+    const ok = await execCopy(clean);
+    notify(ok ? ('Copiado: ' + clean) : 'Falha ao copiar.', ok ? 'success' : 'error');
+  }
+
+  function processar() {
+    const rawCred = $('sd-creditos') ? $('sd-creditos').value : '';
+    const rawPag = $('sd-pagamentos') ? $('sd-pagamentos').value : '';
+    const rawDesc = $('sd-descontos') ? $('sd-descontos').value : '';
+    const onlyOpen = $('sd-only-open') ? $('sd-only-open').checked : true;
+    const searchQuery = $('sd-search') ? $('sd-search').value.trim().toLowerCase() : '';
+
+    const creditos = parseCreditos(rawCred);
+    const pagamentos = parseExtrato(rawPag);
+    const descontos = parseDescontos(rawDesc);
+
+    const detCred = $('sd-detect-creditos');
+    const detPag = $('sd-detect-pagamentos');
+    const detDesc = $('sd-detect-descontos');
+
+    if (detCred) {
+      detCred.className = 'sd-detect ' + (creditos.length ? 'ok' : 'err');
+      detCred.innerHTML = creditos.length
+        ? `<i data-lucide="check-circle"></i> ${creditos.length} contrato(s) identificado(s)`
+        : (rawCred.trim() ? '<i data-lucide="alert-circle"></i> Nenhum contrato reconhecido' : '');
+    }
+    if (detPag) {
+      const ccbMatches = rawPag.match(/ccb\s*[:.-]?\s*\d+/gi) || [];
+      const hasFailed = /falhou|cancelad|estornad|recusad|nao confirmado|não confirmado|erro/i.test(rawPag);
+      if (pagamentos.length > 0) {
+        detPag.className = 'sd-detect ok';
+        detPag.innerHTML = `<i data-lucide="check-circle"></i> ${pagamentos.length} pagamento(s) de CCB confirmado(s)`;
+      } else if (ccbMatches.length > 0 && hasFailed) {
+        detPag.className = 'sd-detect warn';
+        detPag.innerHTML = `<i data-lucide="alert-triangle"></i> CCB localizada, porém o pagamento falhou ou foi cancelado`;
+      } else if (rawPag.trim()) {
+        detPag.className = 'sd-detect warn';
+        detPag.innerHTML = `<i data-lucide="alert-triangle"></i> Nenhum pagamento de CCB encontrado no extrato`;
+      } else {
+        detPag.className = 'sd-detect';
+        detPag.innerHTML = '';
+      }
+    }
+    if (detDesc) {
+      detDesc.className = 'sd-detect ' + (descontos.length ? 'ok' : '');
+      detDesc.innerHTML = descontos.length
+        ? `<i data-lucide="check-circle"></i> ${descontos.length} desconto(s) localizado(s)`
+        : '';
+    }
+
+    if (!creditos.length) {
+      processedRows = [];
+      if ($('sd-kpi-saldo')) $('sd-kpi-saldo').textContent = 'R$ 0,00';
+      if ($('sd-kpi-pagar')) $('sd-kpi-pagar').textContent = 'R$ 0,00';
+      if ($('sd-kpi-desc')) $('sd-kpi-desc').textContent = 'R$ 0,00';
+      if ($('sd-kpi-pago')) $('sd-kpi-pago').textContent = 'R$ 0,00';
+      if ($('sd-kpi-qtd')) $('sd-kpi-qtd').textContent = '0';
+      if ($('sd-kpis')) $('sd-kpis').hidden = true;
+      if ($('sd-table-wrap')) $('sd-table-wrap').hidden = true;
+      if ($('sd-empty')) $('sd-empty').hidden = false;
+      if ($('sd-alertas')) $('sd-alertas').innerHTML = '';
+      if ($('sd-tbody')) $('sd-tbody').innerHTML = '';
+      if (window.lucide) lucide.createIcons();
+      return;
+    }
+
+    const pagoByCcb = new Map();
+    pagamentos.forEach(p => {
+      pagoByCcb.set(p.ccb, (pagoByCcb.get(p.ccb) || 0) + p.value);
+    });
+
+    const descByCcb = new Map();
+    descontos.forEach(d => {
+      descByCcb.set(d.ccb, (descByCcb.get(d.ccb) || 0) + d.value);
+    });
+
+    const rows = creditos.map(c => {
+      const pago = pagoByCcb.get(c.ccb) || 0;
+      const desconto = descByCcb.get(c.ccb) || 0;
+      const liquido = c.valorPagar - desconto;
+      const saldo = Math.max(0, liquido - pago);
+
+      let status = 'aberto', statusTxt = 'Em aberto';
+      const isPagoMentore = /pago/i.test(c.status);
+
+      if (isPagoMentore || saldo <= 0.01) {
+        status = 'quitado';
+        statusTxt = 'Quitado';
+      } else if (pago > 0 || desconto > 0) {
+        status = 'parcial';
+        statusTxt = 'Parcial';
+      }
+
+      return {
+        date: c.date,
+        ccb: c.ccb,
+        statusMentore: c.status,
+        valorPagar: c.valorPagar,
+        desconto,
+        pago,
+        saldo,
+        status,
+        statusTxt
+      };
+    });
+
+    processedRows = rows;
+
+    let displayRows = rows.slice();
+    if (onlyOpen) {
+      displayRows = displayRows.filter(r => r.status !== 'quitado' && !/pago/i.test(r.statusMentore));
+    }
+    if (searchQuery) {
+      displayRows = displayRows.filter(r =>
+        r.ccb.toLowerCase().includes(searchQuery) ||
+        r.statusTxt.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    render(displayRows, rows);
+    save();
+  }
+
+  function render(displayRows, allRows) {
+    const openRows = allRows.filter(r => r.status !== 'quitado' && !/pago/i.test(r.statusMentore));
+    const tot = openRows.reduce((a, r) => ({
+      pagar: a.pagar + r.valorPagar,
+      desconto: a.desconto + r.desconto,
+      pago: a.pago + r.pago,
+      saldo: a.saldo + r.saldo
+    }), { pagar: 0, desconto: 0, pago: 0, saldo: 0 });
+
+    if ($('sd-kpi-saldo')) $('sd-kpi-saldo').textContent = brl(tot.saldo);
+    if ($('sd-kpi-pagar')) $('sd-kpi-pagar').textContent = brl(tot.pagar);
+    if ($('sd-kpi-desc')) $('sd-kpi-desc').textContent = brl(tot.desconto);
+    if ($('sd-kpi-pago')) $('sd-kpi-pago').textContent = brl(tot.pago);
+    if ($('sd-kpi-qtd')) $('sd-kpi-qtd').textContent = String(openRows.length);
+
+    if ($('sd-kpis')) $('sd-kpis').hidden = false;
+    if ($('sd-table-wrap')) $('sd-table-wrap').hidden = displayRows.length === 0;
+    if ($('sd-empty')) $('sd-empty').hidden = displayRows.length > 0;
+
+    const tb = $('sd-tbody');
+    if (!tb) return;
+    tb.innerHTML = '';
+
+    displayRows.forEach(r => {
+      const tr = document.createElement('tr');
+      const td = (txt, cls) => {
+        const d = document.createElement('td');
+        if (cls) d.className = cls;
+        d.textContent = txt;
+        return d;
+      };
+
+      const ccbTd = td('');
+      ccbTd.innerHTML = `<span class="sd-ccb" title="Clique para copiar CCB">${r.ccb} <i data-lucide="copy" style="width:12px;height:12px"></i></span>`;
+      ccbTd.onclick = async () => {
+        const ok = await execCopy(r.ccb);
+        notify(ok ? ('CCB ' + r.ccb + ' copiado!') : 'Falha ao copiar.', ok ? 'success' : 'error');
+      };
+
+      tr.appendChild(td(r.date));
+      tr.appendChild(ccbTd);
+      tr.appendChild(td(brl(r.valorPagar), 'num'));
+      tr.appendChild(td(r.desconto ? '-' + brl(r.desconto) : '—', 'num'));
+      tr.appendChild(td(r.pago ? brl(r.pago) : '—', 'num'));
+      tr.appendChild(td(brl(r.saldo), 'num'));
+
+      const st = document.createElement('td');
+      const sp = document.createElement('span');
+      sp.className = 'sd-status ' + r.status;
+      sp.textContent = r.statusTxt;
+      st.appendChild(sp);
+      tr.appendChild(st);
+
+      tb.appendChild(tr);
+    });
+
+    if (window.lucide && lucide.createIcons) lucide.createIcons();
+  }
+
+  function exportCsv() {
+    if (!processedRows.length) {
+      alert('Nenhum dado para exportar. Processe as informações primeiro.');
+      return;
+    }
+    const dec = n => (Number(n) || 0).toFixed(2).replace('.', ',');
+    const head = ['Data', 'CCB', 'Valor a Pagar', 'Desconto', 'Ja Pago (Extrato)', 'Saldo Devedor', 'Status'];
+    const lines = [head.join(';')];
+    processedRows.forEach(r => {
+      lines.push([r.date, r.ccb, dec(r.valorPagar), dec(r.desconto), dec(r.pago), dec(r.saldo), r.statusTxt].join(';'));
+    });
+    const blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'saldo_devedor_mentore_' + new Date().toISOString().slice(0, 10) + '.csv';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    notify('Relatório CSV baixado!');
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        creditos: $('sd-creditos') ? $('sd-creditos').value : '',
+        pagamentos: $('sd-pagamentos') ? $('sd-pagamentos').value : '',
+        descontos: $('sd-descontos') ? $('sd-descontos').value : ''
+      }));
+    } catch (e) {}
+  }
+
+  function load() {
+    try {
+      const o = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+      if (!o) return;
+      if ($('sd-creditos')) $('sd-creditos').value = o.creditos || '';
+      if ($('sd-pagamentos')) $('sd-pagamentos').value = o.pagamentos || '';
+      if ($('sd-descontos')) $('sd-descontos').value = o.descontos || '';
+    } catch (e) {}
+  }
+
+  function limparTudo() {
+    if (!confirm('Deseja limpar todos os campos colados e o resultado?')) return;
+    if ($('sd-creditos')) $('sd-creditos').value = '';
+    if ($('sd-pagamentos')) $('sd-pagamentos').value = '';
+    if ($('sd-descontos')) $('sd-descontos').value = '';
+    if ($('sd-search')) $('sd-search').value = '';
+    if ($('sd-only-open')) $('sd-only-open').checked = true;
+
+    const detCred = $('sd-detect-creditos');
+    const detPag = $('sd-detect-pagamentos');
+    const detDesc = $('sd-detect-descontos');
+    if (detCred) { detCred.className = 'sd-detect'; detCred.innerHTML = ''; }
+    if (detPag) { detPag.className = 'sd-detect'; detPag.innerHTML = ''; }
+    if (detDesc) { detDesc.className = 'sd-detect'; detDesc.innerHTML = ''; }
+
+    processedRows = [];
+    if ($('sd-kpi-saldo')) $('sd-kpi-saldo').textContent = 'R$ 0,00';
+    if ($('sd-kpi-pagar')) $('sd-kpi-pagar').textContent = 'R$ 0,00';
+    if ($('sd-kpi-desc')) $('sd-kpi-desc').textContent = 'R$ 0,00';
+    if ($('sd-kpi-pago')) $('sd-kpi-pago').textContent = 'R$ 0,00';
+    if ($('sd-kpi-qtd')) $('sd-kpi-qtd').textContent = '0';
+    if ($('sd-kpis')) $('sd-kpis').hidden = true;
+    if ($('sd-table-wrap')) $('sd-table-wrap').hidden = true;
+    if ($('sd-empty')) $('sd-empty').hidden = false;
+    if ($('sd-alertas')) $('sd-alertas').innerHTML = '';
+    if ($('sd-tbody')) $('sd-tbody').innerHTML = '';
+
+    try { localStorage.removeItem(LS_KEY); } catch (e) {}
+
+    if (window.lucide) lucide.createIcons();
+    notify('Campos limpos!', 'warn');
+  }
+
+  function init() {
+    if (!$('sd-processar')) return;
+
+    $('sd-processar').onclick = () => { processar(); notify('Relatório processado!'); };
+    if ($('sd-exportar')) $('sd-exportar').onclick = exportCsv;
+    if ($('sd-limpar')) $('sd-limpar').onclick = limparTudo;
+
+    if ($('sd-only-open')) $('sd-only-open').onchange = processar;
+    if ($('sd-search')) $('sd-search').oninput = processar;
+
+    // KPI copy: always textContent of the target <strong>
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.sd-kpi-copy');
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const targetId = btn.getAttribute('data-target');
+      if (targetId) copyKpiValue(targetId);
+    });
+
+    ['creditos', 'pagamentos', 'descontos'].forEach(k => {
+      const ta = $('sd-' + k);
+      if (!ta) return;
+      ta.addEventListener('paste', () => setTimeout(processar, 50));
+      ta.addEventListener('input', () => {
+        clearTimeout(ta._t);
+        ta._t = setTimeout(processar, 300);
+      });
+    });
+
+    load();
+    if ($('sd-creditos') && $('sd-creditos').value.trim()) processar();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+<!-- SCRIPT DE TEMAS -->
 <script>
 (() => {
   'use strict';
   const KEY = 'rf_theme_v1';
   const root = document.documentElement;
-  const btn = document.getElementById('theme-toggle-btn');
-  const label = document.getElementById('theme-toggle-label');
 
   function current() {
-    return root.getAttribute('data-theme') === 'classic' ? 'classic' : 'lime';
+    const t = root.getAttribute('data-theme');
+    return t === 'classic' ? 'classic' : 'lime';
   }
 
   function apply(theme) {
-    root.setAttribute('data-theme', theme);
-    try { localStorage.setItem(KEY, theme); } catch (e) {}
-    if (label) label.textContent = theme === 'classic' ? 'Tema ET Verde' : 'Tema ET Azul';
-    if (btn) btn.title = theme === 'classic' ? 'Mudar para Modern Lime' : 'Mudar para Classic ET';
+    const next = theme === 'classic' ? 'classic' : 'lime';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+
+    const btn = document.getElementById('theme-toggle-btn');
+    const label = document.getElementById('theme-toggle-label');
+
+    // Label mostra o tema ATIVO
+    if (label) {
+      label.textContent = next === 'classic' ? 'Tema Azul' : 'Tema Verde';
+    }
+    if (btn) {
+      btn.title = next === 'classic'
+        ? 'Clique para mudar para Tema Verde'
+        : 'Clique para mudar para Tema Azul';
+      btn.setAttribute('aria-label', btn.title);
+    }
+
+    // Re-render lucide icons without replacing the whole button listener tree
+    try {
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    } catch (e) {}
+  }
+
+  function toggleTheme(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    apply(current() === 'classic' ? 'lime' : 'classic');
+  }
+
+  // Aplicar tema salvo (ou default)
+  apply(current());
+
+  // Delegação: funciona mesmo se o Lucide trocar o ícone interno do botão
+  document.addEventListener('click', function (e) {
+    const btn = e.target && e.target.closest
+      ? e.target.closest('#theme-toggle-btn')
+      : null;
+    if (!btn) return;
+    toggleTheme(e);
+  });
+})();
+</script>
+
+<!-- SCRIPT: CHAT INTERNO (Supabase) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(() => {
+  'use strict';
+
+  const RF_CHAT_CONFIG = {
+    enabled: true,
+    supabaseUrl: 'https://xxjrfeewwwxbujodvrvo.supabase.co',
+    supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4anJmZWV3d3d4YnVqb2R2cnZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3ODA3NjAsImV4cCI6MjEwMTM1Njc2MH0.XA68lXz15ZDG9qfOGUeSf3M_S6xnld9fyBYfEPjWR5s',
+    allowedEmailDomain: ''
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const fab = $('rf-chat-fab');
+  const panel = $('rf-chat-panel');
+  const badge = $('rf-chat-badge');
+  const dot = $('rf-chat-dot');
+  const subtitle = $('rf-chat-subtitle');
+  const setupEl = $('rf-chat-setup');
+  const authEl = $('rf-chat-auth');
+  const msgsWrap = $('rf-chat-messages-wrap');
+  const msgsEl = $('rf-chat-messages');
+  const compose = $('rf-chat-compose');
+  const input = $('rf-chat-input');
+  const sendBtn = $('rf-chat-send');
+  const userbar = $('rf-chat-userbar');
+  const userLabel = $('rf-chat-user-label');
+  const logoutBtn = $('rf-chat-logout');
+  const backBtn = $('rf-chat-back');
+  const titleEl = $('rf-chat-title');
+  const modePill = $('rf-chat-mode-pill');
+  const tabsEl = $('rf-chat-tabs');
+  const authMsg = $('rf-chat-auth-msg');
+  const DISPLAY_KEY = 'rf_chat_display_name_v1';
+  const UNREAD_KEY = 'rf_chat_dm_unread_v1';
+  const NOTIF_PERM_KEY = 'rf_chat_notif_perm_asked_v1';
+
+  let audioCtx = null;
+  let audioUnlocked = false;
+
+  function unlockAudio() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!audioCtx) audioCtx = new AC();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      audioUnlocked = true;
+    } catch (e) {}
+  }
+
+  function playMessageSound() {
+    try {
+      unlockAudio();
+      if (!audioCtx) return;
+      const t0 = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, t0);
+      osc.frequency.exponentialRampToValueAtTime(660, t0 + 0.09);
+      gain.gain.setValueAtTime(0.0001, t0);
+      gain.gain.exponentialRampToValueAtTime(0.18, t0 + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.16);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(t0);
+      osc.stop(t0 + 0.18);
+    } catch (e) {}
+  }
+
+  function ensureNotificationPermission() {
+    try {
+      if (!('Notification' in window)) return;
+      if (Notification.permission === 'granted' || Notification.permission === 'denied') return;
+      if (localStorage.getItem(NOTIF_PERM_KEY) === '1') return;
+      localStorage.setItem(NOTIF_PERM_KEY, '1');
+      Notification.requestPermission();
+    } catch (e) {}
+  }
+
+  function notifyBrowser(title, body) {
+    try {
+      if (!('Notification' in window)) return;
+      if (Notification.permission !== 'granted') return;
+      if (!document.hidden) return;
+      const n = new Notification(title || 'Chat da equipe', {
+        body: body || 'Nova mensagem',
+        silent: false,
+        tag: 'rf-chat-msg',
+        renotify: true
+      });
+      n.onclick = function () {
+        try { window.focus(); } catch (e) {}
+        n.close();
+      };
+      setTimeout(function () { try { n.close(); } catch (e) {} }, 6000);
+    } catch (e) {}
+  }
+
+  function alertIncomingMessage(row) {
+    if (!row) return;
+    const uid = session && session.user && session.user.id;
+    if (!uid || row.user_id === uid) return;
+
+    playMessageSound();
+
+    const who = row.display_name || 'Colega';
+    const preview = String(row.body || '').slice(0, 80);
+    const title = row.recipient_id ? ('Privado · ' + who) : ('Equipe · ' + who);
+    notifyBrowser(title, preview);
+  }
+
+  let client = null;
+  let session = null;
+  let channel = null;
+  let knownIds = new Set();
+  let unread = 0;
+  let panelOpen = false;
+  let dmPeer = null;
+  let dmContacts = new Map();
+  let unreadMap = {};
+
+  function configured() {
+    return !!(RF_CHAT_CONFIG.enabled && RF_CHAT_CONFIG.supabaseUrl && RF_CHAT_CONFIG.supabaseAnonKey);
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  function setAuthMessage(text, type) {
+    authMsg.textContent = text || '';
+    authMsg.dataset.type = type || '';
+  }
+
+  function formatTime(iso) {
+    try {
+      return new Intl.DateTimeFormat('pt-BR', { hour: '2-digit', minute: '2-digit' }).format(new Date(iso));
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function setOnline(on) {
+    dot.dataset.online = on ? 'true' : 'false';
+  }
+
+  function readUnreadStore() {
+    try {
+      const v = JSON.parse(localStorage.getItem(UNREAD_KEY) || '{}');
+      return (v && typeof v === 'object') ? v : {};
+    } catch (e) { return {}; }
+  }
+  function writeUnreadStore() {
+    try { localStorage.setItem(UNREAD_KEY, JSON.stringify(unreadMap)); } catch (e) {}
+  }
+  function totalUnread() {
+    let n = 0;
+    Object.keys(unreadMap).forEach((k) => { n += Number(unreadMap[k]) || 0; });
+    return n;
+  }
+  function bumpUnread(key, by) {
+    if (!key) return;
+    unreadMap[key] = (Number(unreadMap[key]) || 0) + (by || 1);
+    writeUnreadStore();
+    updateUnread();
+    renderDmTabs();
+  }
+  function clearUnread(key) {
+    if (!key) return;
+    if (unreadMap[key]) {
+      delete unreadMap[key];
+      writeUnreadStore();
+    }
+    updateUnread();
+    renderDmTabs();
+  }
+  function updateUnread() {
+    const n = totalUnread();
+    unread = n;
+    if (n > 0 && !panelOpen) {
+      badge.textContent = n > 99 ? '99+' : String(n);
+      badge.dataset.show = 'true';
+    } else {
+      badge.dataset.show = 'false';
+    }
+  }
+
+  function registerContact(id, name) {
+    if (!id) return;
+    const prev = dmContacts.get(id);
+    const label = (name && String(name).trim()) || (prev && prev.name) || 'Colega';
+    dmContacts.set(id, { id: id, name: label.slice(0, 40) });
+  }
+
+  function renderDmTabs() {
+    if (!tabsEl) return;
+    if (!session || msgsWrap.hidden) {
+      tabsEl.dataset.show = 'false';
+      tabsEl.innerHTML = '';
+      return;
+    }
+    tabsEl.dataset.show = 'true';
+    const teamUnread = Number(unreadMap['__team__']) || 0;
+    let html = '';
+    html += '<button type="button" class="rf-chat-tab" data-tab="team" data-active="' + (!dmPeer ? 'true' : 'false') + '" role="tab">' +
+      '<span class="rf-chat-tab-label">Equipe</span>' +
+      '<span class="rf-chat-tab-badge" data-show="' + (teamUnread > 0 && !!dmPeer ? 'true' : 'false') + '">' + (teamUnread > 99 ? '99+' : teamUnread) + '</span>' +
+      '</button>';
+    const list = Array.from(dmContacts.values()).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+    list.forEach((c) => {
+      const u = Number(unreadMap[c.id]) || 0;
+      const active = dmPeer && dmPeer.id === c.id;
+      html += '<button type="button" class="rf-chat-tab" data-tab="dm" data-peer-id="' + esc(c.id) + '" data-peer-name="' + esc(c.name) + '" data-active="' + (active ? 'true' : 'false') + '" role="tab">' +
+        '<span class="rf-chat-tab-label">' + esc(c.name) + '</span>' +
+        '<span class="rf-chat-tab-badge" data-show="' + (u > 0 && !active ? 'true' : 'false') + '">' + (u > 99 ? '99+' : u) + '</span>' +
+        '</button>';
+    });
+    tabsEl.innerHTML = html;
+  }
+
+  function showView(name) {
+    setupEl.hidden = name !== 'setup';
+    authEl.hidden = name !== 'auth';
+    msgsWrap.hidden = name !== 'chat';
+    compose.dataset.show = name === 'chat' ? 'true' : 'false';
+    userbar.dataset.show = name === 'chat' ? 'true' : 'false';
+    logoutBtn.hidden = name !== 'chat';
+    input.disabled = name !== 'chat';
+    sendBtn.disabled = name !== 'chat';
+    if (tabsEl && name !== 'chat') {
+      tabsEl.dataset.show = 'false';
+      tabsEl.innerHTML = '';
+    }
+  }
+
+  function openPanel() {
+    panelOpen = true;
+    panel.dataset.open = 'true';
+    fab.dataset.open = 'true';
+    unlockAudio();
+    ensureNotificationPermission();
+    if (dmPeer) clearUnread(dmPeer.id);
+    else clearUnread('__team__');
+    updateUnread();
+    renderDmTabs();
+    if (window.lucide) lucide.createIcons();
+    if (!msgsWrap.hidden) scrollBottom();
+  }
+
+  function closePanel() {
+    panelOpen = false;
+    panel.dataset.open = 'false';
+    fab.dataset.open = 'false';
+  }
+
+  function scrollBottom() {
+    requestAnimationFrame(() => {
+      msgsWrap.scrollTop = msgsWrap.scrollHeight;
+    });
+  }
+
+  function isPrivateRow(row) {
+    return !!(row && row.recipient_id);
+  }
+
+  function rowBelongsToCurrentView(row) {
+    if (!row) return false;
+    const uid = session && session.user && session.user.id;
+    if (!dmPeer) {
+      return !row.recipient_id;
+    }
+    const a = row.user_id;
+    const b = row.recipient_id;
+    return (
+      (a === uid && b === dmPeer.id) ||
+      (a === dmPeer.id && b === uid)
+    );
+  }
+
+  function rowIsUnreadForMe(row) {
+    const uid = session && session.user && session.user.id;
+    if (!row || !uid || row.user_id === uid) return false;
+    if (!row.recipient_id) return true;
+    return row.recipient_id === uid;
+  }
+
+  function updateHeaderForMode() {
+    if (dmPeer) {
+      if (titleEl) titleEl.textContent = 'Privado · ' + dmPeer.name;
+      subtitle.textContent = 'Só vocês dois';
+      if (modePill) modePill.dataset.show = 'true';
+      if (backBtn) backBtn.hidden = false;
+      if (input) input.placeholder = 'Mensagem privada para ' + dmPeer.name + '…';
+    } else {
+      if (titleEl) titleEl.textContent = 'Chat da equipe';
+      subtitle.textContent = session ? 'Online' : 'Rodrigo Facilidades';
+      if (modePill) modePill.dataset.show = 'false';
+      if (backBtn) backBtn.hidden = true;
+      if (input) input.placeholder = 'Mensagem para a equipe…';
+    }
     if (window.lucide) lucide.createIcons();
   }
 
-  apply(current());
+  async function openPrivateChat(peerId, peerName) {
+    if (!session || !peerId) return;
+    if (session.user.id === peerId) return;
+    registerContact(peerId, peerName || 'Colega');
+    dmPeer = { id: peerId, name: (peerName || 'Colega').slice(0, 40) };
+    clearUnread(peerId);
+    updateHeaderForMode();
+    renderDmTabs();
+    await loadHistory();
+  }
 
-  if (btn) {
-    btn.addEventListener('click', () => {
-      apply(current() === 'classic' ? 'lime' : 'classic');
+  function backToTeamChat() {
+    dmPeer = null;
+    clearUnread('__team__');
+    updateHeaderForMode();
+    renderDmTabs();
+    loadHistory();
+  }
+
+  function unreadKeyForRow(row) {
+    const uid = session && session.user && session.user.id;
+    if (!row || !uid || row.user_id === uid) return null;
+    if (!row.recipient_id) return '__team__';
+    if (row.recipient_id === uid) return row.user_id;
+    return null;
+  }
+
+  function appendMessage(row, mine, opts) {
+    if (!row || !row.id || knownIds.has(row.id)) return;
+    opts = opts || {};
+
+    const uid = session && session.user && session.user.id;
+    if (!mine && opts.notify) alertIncomingMessage(row);
+    if (row.recipient_id && uid) {
+      if (row.user_id === uid) registerContact(row.recipient_id, null);
+      else if (row.recipient_id === uid) registerContact(row.user_id, row.display_name);
+    }
+
+    if (!rowBelongsToCurrentView(row)) {
+      if (!mine && opts.notify && rowIsUnreadForMe(row)) {
+        const key = unreadKeyForRow(row);
+        const viewingThis =
+          (key === '__team__' && !dmPeer && panelOpen) ||
+          (dmPeer && key === dmPeer.id && panelOpen);
+        if (!viewingThis && key) bumpUnread(key, 1);
+      }
+      renderDmTabs();
+      return;
+    }
+    knownIds.add(row.id);
+    const empty = msgsEl.querySelector('.rf-chat-empty');
+    if (empty) empty.remove();
+
+    const canDm = !mine && row.user_id && session && row.user_id !== session.user.id;
+    const el = document.createElement('div');
+    el.className = 'rf-chat-msg' + (mine ? ' mine' : '');
+    el.dataset.id = row.id;
+    el.innerHTML =
+      '<div class="rf-chat-msg-meta">' +
+        '<span class="rf-chat-msg-author"' +
+          (canDm ? ' data-clickable="true" data-user-id="' + esc(row.user_id) + '" data-user-name="' + esc(row.display_name || 'Colega') + '" title="Abrir chat privado"' : '') +
+        '>' + esc(row.display_name || 'Colega') + '</span>' +
+        (isPrivateRow(row) ? '<span class="rf-chat-msg-time">privado</span>' : '') +
+        '<span class="rf-chat-msg-time">' + esc(formatTime(row.created_at)) + '</span>' +
+      '</div>' +
+      '<div class="rf-chat-msg-text">' + esc(row.body) + '</div>';
+    msgsEl.appendChild(el);
+
+    if (!mine && opts.notify && rowIsUnreadForMe(row)) {
+      const key = unreadKeyForRow(row);
+      const viewingThis =
+        (key === '__team__' && !dmPeer && panelOpen) ||
+        (dmPeer && key === dmPeer.id && panelOpen);
+      if (!viewingThis && key) bumpUnread(key, 1);
+    }
+    scrollBottom();
+    renderDmTabs();
+  }
+
+  async function loadHistory() {
+    msgsEl.innerHTML = '';
+    knownIds.clear();
+    if (!client || !session) return;
+
+    const { data, error } = await client
+      .from('team_messages')
+      .select('id, user_id, recipient_id, display_name, body, created_at')
+      .order('created_at', { ascending: true })
+      .limit(400);
+
+    if (error) {
+      const msg = String(error.message || '');
+      msgsEl.innerHTML = '<div class="rf-chat-empty">Não foi possível carregar as mensagens.<br><small>' + esc(msg) + '</small></div>';
+      setOnline(false);
+      return;
+    }
+
+    const uid = session.user.id;
+    let rows = Array.isArray(data) ? data.slice() : [];
+    if (dmPeer) {
+      const pid = dmPeer.id;
+      rows = rows.filter((r) =>
+        (r.user_id === uid && r.recipient_id === pid) ||
+        (r.user_id === pid && r.recipient_id === uid)
+      );
+    } else {
+      rows = rows.filter((r) => r.recipient_id == null);
+    }
+
+    if (!rows.length) {
+      msgsEl.innerHTML = dmPeer
+        ? '<div class="rf-chat-empty">Nenhuma mensagem privada com <strong>' + esc(dmPeer.name) + '</strong>.</div>'
+        : '<div class="rf-chat-empty">Nenhuma mensagem ainda.<br>Seja o primeiro a escrever para a equipe.</div>';
+      return;
+    }
+
+    const all = Array.isArray(data) ? data : [];
+    all.forEach((r) => {
+      if (!r || !r.recipient_id) return;
+      if (r.user_id === uid) registerContact(r.recipient_id, null);
+      else if (r.recipient_id === uid) registerContact(r.user_id, r.display_name);
     });
+    rows.forEach((row) => appendMessage(row, row.user_id === uid));
+    renderDmTabs();
+    scrollBottom();
+  }
+
+  function subscribeRealtime() {
+    if (channel) {
+      try { client.removeChannel(channel); } catch (e) {}
+      channel = null;
+    }
+    channel = client
+      .channel('team_messages_rt')
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'team_messages'
+      }, (payload) => {
+        const row = payload.new;
+        const uid = session && session.user && session.user.id;
+        appendMessage(row, row && row.user_id === uid, { notify: true });
+      })
+      .subscribe((status) => {
+        setOnline(status === 'SUBSCRIBED');
+      });
+  }
+
+  async function enterChat(sess) {
+    session = sess;
+    const email = (sess.user && sess.user.email) || '';
+    let display = '';
+    try { display = localStorage.getItem(DISPLAY_KEY) || ''; } catch (e) {}
+    if (!display) display = (email.split('@')[0] || 'Colega').slice(0, 40);
+    userLabel.textContent = display || (email ? email.split('@')[0] : '—');
+    unreadMap = readUnreadStore();
+    showView('chat');
+    updateHeaderForMode();
+    await loadHistory();
+    renderDmTabs();
+    updateUnread();
+    subscribeRealtime();
+  }
+
+  function leaveChatUi() {
+    session = null;
+    dmPeer = null;
+    dmContacts = new Map();
+    setOnline(false);
+    if (titleEl) titleEl.textContent = 'Chat da equipe';
+    subtitle.textContent = 'Rodrigo Facilidades';
+    if (modePill) modePill.dataset.show = 'false';
+    if (backBtn) backBtn.hidden = true;
+    if (tabsEl) { tabsEl.dataset.show = 'false'; tabsEl.innerHTML = ''; }
+    if (channel && client) {
+      try { client.removeChannel(channel); } catch (e) {}
+      channel = null;
+    }
+    knownIds.clear();
+    msgsEl.innerHTML = '';
+    showView('auth');
+  }
+
+  function usernameToEmail(name) {
+    const raw = String(name || '').trim();
+    if (!raw) return null;
+    const slug = raw
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '')
+      .slice(0, 32);
+    if (!slug || slug.length < 2) return null;
+    return slug + '@rf-chat.local';
+  }
+
+  function validateUsername(name) {
+    const n = String(name || '').trim();
+    if (!n || n.length < 2) return 'Informe um nome de usuário (mín. 2 caracteres).';
+    if (n.length > 40) return 'Nome muito longo (máx. 40).';
+    if (!usernameToEmail(n)) return 'Use letras ou números no nome.';
+    return null;
+  }
+
+  async function handleLogin(isSignup) {
+    const password = $('rf-chat-password').value;
+    const display = $('rf-chat-display').value.trim().slice(0, 40);
+    const err = validateUsername(display);
+    if (err) { setAuthMessage(err, 'error'); return; }
+    if (!password || password.length < 6) {
+      setAuthMessage('Senha com pelo menos 6 caracteres.', 'error');
+      return;
+    }
+    const email = usernameToEmail(display);
+    setAuthMessage(isSignup ? 'Criando conta…' : 'Entrando…', '');
+    try {
+      try { localStorage.setItem(DISPLAY_KEY, display); } catch (e) {}
+      if (isSignup) {
+        const { data, error } = await client.auth.signUp({ email, password });
+        if (error) throw error;
+        if (data.session) {
+          await enterChat(data.session);
+          setAuthMessage('');
+        } else {
+          setAuthMessage('Conta criada com sucesso.', 'ok');
+        }
+      } else {
+        const { data, error } = await client.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        await enterChat(data.session);
+        setAuthMessage('');
+      }
+    } catch (e) {
+      let msg = (e && e.message) ? e.message : 'Falha na autenticação.';
+      setAuthMessage(msg, 'error');
+    }
+  }
+
+  async function sendMessage(ev) {
+    if (ev) ev.preventDefault();
+    if (!session || !client) return;
+    const body = input.value.trim();
+    if (!body) return;
+    let display = '';
+    try { display = localStorage.getItem(DISPLAY_KEY) || ''; } catch (e) {}
+    if (!display) {
+      display = ((session.user && session.user.email) || 'Colega').split('@')[0].slice(0, 40);
+    }
+    sendBtn.disabled = true;
+    const payload = {
+      user_id: session.user.id,
+      display_name: display,
+      body: body.slice(0, 2000),
+      recipient_id: dmPeer ? dmPeer.id : null
+    };
+    const { data, error } = await client.from('team_messages').insert(payload).select('id, user_id, recipient_id, display_name, body, created_at').single();
+    sendBtn.disabled = false;
+    if (error) {
+      alert('Não foi possível enviar: ' + error.message);
+      return;
+    }
+    input.value = '';
+    input.focus();
+    if (data) appendMessage(data, true);
+    else await loadHistory();
+  }
+
+  function initUi() {
+    const unlockOnce = () => { unlockAudio(); ensureNotificationPermission(); };
+    document.addEventListener('click', unlockOnce, { once: true, passive: true });
+    document.addEventListener('keydown', unlockOnce, { once: true, passive: true });
+
+    fab.addEventListener('click', openPanel);
+    $('rf-chat-close').addEventListener('click', closePanel);
+    if (backBtn) backBtn.addEventListener('click', backToTeamChat);
+    if (tabsEl) {
+      tabsEl.addEventListener('click', (e) => {
+        const tab = e.target.closest('.rf-chat-tab');
+        if (!tab) return;
+        if (tab.dataset.tab === 'team') backToTeamChat();
+        else if (tab.dataset.tab === 'dm') {
+          openPrivateChat(tab.dataset.peerId, tab.dataset.peerName);
+        }
+      });
+    }
+    $('rf-chat-login').addEventListener('click', () => handleLogin(false));
+    $('rf-chat-signup').addEventListener('click', () => handleLogin(true));
+    logoutBtn.addEventListener('click', async () => {
+      if (client) await client.auth.signOut();
+      leaveChatUi();
+    });
+    msgsEl.addEventListener('click', (e) => {
+      const author = e.target.closest('.rf-chat-msg-author[data-clickable="true"]');
+      if (!author) return;
+      const id = author.getAttribute('data-user-id');
+      const name = author.getAttribute('data-user-name') || 'Colega';
+      if (id) openPrivateChat(id, name);
+    });
+    compose.addEventListener('submit', sendMessage);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    if (!configured()) {
+      showView('setup');
+      subtitle.textContent = 'Não configurado';
+      return;
+    }
+
+    if (typeof window.supabase === 'undefined' || !window.supabase.createClient) {
+      showView('setup');
+      setupEl.querySelector('h3').textContent = 'Biblioteca Supabase não carregou';
+      return;
+    }
+
+    client = window.supabase.createClient(
+      RF_CHAT_CONFIG.supabaseUrl,
+      RF_CHAT_CONFIG.supabaseAnonKey,
+      { auth: { persistSession: true, autoRefreshToken: true } }
+    );
+
+    client.auth.getSession().then(({ data }) => {
+      if (data && data.session) enterChat(data.session);
+      else showView('auth');
+    });
+
+    client.auth.onAuthStateChange((event, sess) => {
+      if (event === 'SIGNED_OUT') leaveChatUi();
+      if (event === 'SIGNED_IN' && sess) enterChat(sess);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUi);
+  } else {
+    initUi();
   }
 })();
 </script>
