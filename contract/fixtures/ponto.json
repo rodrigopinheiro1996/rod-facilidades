@@ -1,0 +1,18 @@
+{
+  "description": "Cenário reproduzível pela interface, sem registros reais.",
+  "dateMode": "dia atual da execução",
+  "actions": [
+    "Registrar entrada",
+    "Registrar saída imediatamente",
+    "Adicionar ajuste de +01:45 com a nota Fixture de contrato"
+  ],
+  "expectedStableValues": {
+    "adjustmentMinutes": 105,
+    "workedTodayMinimum": "01:45",
+    "workedWeekMinimum": "01:45",
+    "weeklyGoal": "04:00",
+    "maximumMissingForGoal": "02:15",
+    "recordsAdded": 3
+  },
+  "timingNote": "A duração entre entrada e saída pode aumentar se o cenário não for executado imediatamente; por isso os valores de trabalho são mínimos conhecidos."
+}
